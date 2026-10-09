@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+settings.json
+# personal files — never commit
+secret_comp.txt
+*.xlsx
+~$*
