@@ -4,6 +4,7 @@ Run:   ~/Documents/EmojiClock/.venv/bin/python ~/Documents/EmojiClock/emoji_cloc
 Use:   drag to move · hover to make them dance faster · right-click for 12h/24h and Quit
 """
 
+import fcntl
 import json
 import math
 import time
@@ -319,6 +320,13 @@ class AppDelegate(NSObject):
 
 
 if __name__ == "__main__":
+    # Single instance: if another clock already holds the lock, exit quietly.
+    _lock = open("/tmp/emojiclock.lock", "w")
+    try:
+        fcntl.flock(_lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except BlockingIOError:
+        raise SystemExit("EmojiClock is already running.")
+
     app = NSApplication.sharedApplication()
     app.setActivationPolicy_(NSApplicationActivationPolicyAccessory)  # no Dock icon
     delegate = AppDelegate.alloc().init()
