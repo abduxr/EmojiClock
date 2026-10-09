@@ -7,7 +7,12 @@ A tiny floating macOS widget that shows **IST + UTC** time as dancing sun/moon e
 ## Requirements
 - macOS with Python 3.9+ (`python3 --version`)
 
-## Install & run
+## One-line install (starts now + at every login)
+```zsh
+git clone https://github.com/abduxr/EmojiClock.git ~/EmojiClock && cd ~/EmojiClock && ./setup.sh && ./install-autostart.sh
+```
+
+## Install & run (manual)
 ```zsh
 git clone https://github.com/abduxr/EmojiClock.git
 cd EmojiClock
